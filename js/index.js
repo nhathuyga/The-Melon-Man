@@ -3,6 +3,7 @@ var game = {
 	canvas: document.getElementById('canvas'),
 	context: this.canvas.getContext('2d', {alpha: false}),
 	counter: document.getElementById('counter'),
+	score: document.getElementById('score'),
 	textures: new Image(),
 	drawPending: false,
 	backgrounds: {
@@ -46,5 +47,7 @@ var game = {
 	map: {
 		structures: []
 	},
-	isOver: false
+	isOver: false,
+	jumpCount: 0,
+	doubleJumpInterval: 500,
 }

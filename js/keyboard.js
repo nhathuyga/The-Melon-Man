@@ -51,19 +51,26 @@ game.clearMoveIntervals = function () {
 game.keydown = function (event) {
 	if (!game.pressedKeys[event.keyCode]) { // Prevent key repeating
 		switch (event.keyCode) {
-		case 65:
-		case 37:
-			game.moveLeft()
-			break
-		case 68:
-		case 39:
-			game.moveRight()
-			break
-		case 32:
-			game.player.jump()
-			break
-	}
-		game.pressedKeys[event.keyCode] = true
+			case 65:
+			case 37:
+				game.moveLeft()
+				break
+			case 68:
+			case 39:
+				game.moveRight()
+				break
+			case 32:
+				++game.jumpCount;
+				if (game.jumpCount === 1) {
+					game.player.jump();
+				} 
+
+				if (game.jumpCount === 2) {
+					game.player.jump('', true);
+				}
+				break;
+		}
+		game.pressedKeys[event.keyCode] = true;
 	}
 }
 
@@ -78,5 +85,10 @@ game.keyup = function (event) {
 		case 39:
 			clearInterval(game.player.moveRightInterval)
 			break
+		case 32: 					
+			game.pressedKeys[event.keyCode] = false;	
+			setTimeout(function () {
+				game.jumpCount = 0; 
+			}, game.doubleJumpInterval)
 		}
 }
