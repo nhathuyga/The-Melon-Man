@@ -49,5 +49,5 @@ var game = {
 	},
 	isOver: false,
 	jumpCount: 0,
-	doubleJumpInterval: 500,
+	doubleJumpInterval: 300,
 }
