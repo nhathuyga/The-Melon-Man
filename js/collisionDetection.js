@@ -25,6 +25,7 @@ game.checkCollisions = function () {
 				&& !game.player.startedJump
 			) {
 				clearInterval(game.player.fallInterval)
+				game.jumpCount = 0
 				game.player.isInAir = false
 				game.player.y = Math.round(game.player.y / game.options.tileHeight) * game.options.tileHeight
 				return true

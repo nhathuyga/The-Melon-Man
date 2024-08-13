@@ -65,7 +65,7 @@ game.keydown = function (event) {
 					game.player.jump();
 				} 
 
-				if (game.jumpCount === 2) {
+				if (game.jumpCount === 2) {					
 					game.player.jump('', true);
 				}
 				break;
@@ -85,10 +85,5 @@ game.keyup = function (event) {
 		case 39:
 			clearInterval(game.player.moveRightInterval)
 			break
-		case 32: 					
-			game.pressedKeys[event.keyCode] = false;	
-			setTimeout(function () {
-				game.jumpCount = 0; 
-			}, game.doubleJumpInterval)
 		}
 }
